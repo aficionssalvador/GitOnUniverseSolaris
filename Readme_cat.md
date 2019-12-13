@@ -66,7 +66,7 @@ Mode                LastWriteTime         Length Name
 -a----       05/12/2019     12:08           1149 known_hosts
 ```
 
-Si no es disposa de les claus en el PC-CLIENT jo les vaig regenerar amb <https://www.cygwin.com/> es generen amb la instrucció
+Si no es disposa de les claus en el PC-CLIENT jo les vaig regenerar amb https://www.cygwin.com/ pero git incorpora una part de cygwin i les claus es generen amb la instrucció:
 
 ```
 ssh-keygen 

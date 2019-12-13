@@ -68,7 +68,7 @@ Mode                LastWriteTime         Length Name
 -a----       05/12/2019     12:08           1149 known_hosts
 ```
 
-If the keys are not available on the PC-CLIENT I regenerated them with <https://www.cygwin.com/> they are generated with the instruction
+If the keys are not available on the PC-CLIENT I regenerated them with https://www.cygwin.com/ but git incorporates a part of cygwin and the keys are generated with the instruction:
 
 ```
 ssh-keygen
