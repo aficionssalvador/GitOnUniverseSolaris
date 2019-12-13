@@ -2,6 +2,8 @@
 
 This document describes the installation and configuration process for a "git" server and a client on Unix Solaris Sparc. The communication protocol of choice is ssh.
 
+Remember to backup your server before doing these actions
+
 With the help of the google translator an English version is maintained.
 
 ## Installation
@@ -74,4 +76,115 @@ ssh-keygen
 ```
 
 If you have followed these steps, you do not need to enter the password when connecting the client.
+
+## Git server installation
+
+For testing I installed the server at: @ @ uvsprv00: /usr/gitserver/dp1.git (the ideal would be to place it in the cloud)
+
+```
+cd /usr/gitserver
+# ó 
+mkdir /usr/gitserver
+```
+
+```
+cd /usr/gitserver
+umask 0 ;# o els permisos correctes 
+mkddir dp1.git
+cd dp1.git
+git init –bare --share
+```
+
+## Git client installation (server program account)
+
+You need to create a client connected to the "origin / master" of the @ uvsprv00: /usr/gitserver/dp1.git
+
+in the directory "srigau @ uvsprv00: / usr / datauv / dp1"
+
+This option I make is a clone of the previous repository, but it requires an empty directory
+
+```
+umask 0
+mkdir /usr/dadesuv/tmp
+cd /usr/dadesuv/tmp
+git clone file:///usr/gitserver/dp1.git
+```
+
+The only thing we want is the contents of the .git directory that you created and leave it in the program account directory.
+
+```
+mv /usr/dadesuv/tmp/dp1/.git /usr/dadesuv/dp1
+rm -r /usr/dadesuv/tmp
+```
+
+We can configure the account with user information
+
+```
+cd /usr/dadesuv/dp1
+git congig --local -e
+```
+
+I filled out a .gitignore file for that when doing
+
+```
+git add .
+```
+
+What you do is include the same as (you can create a script with the following list)
+
+```
+git add PRGH ;# programes
+..
+git add SUBPRG ;# subrutines
+..
+git add TXTH ;# includes
+```
+
+The important thing is to incorporate all the source program directories without any data file.
+
+Lastly I uploaded the current program version to the server.
+
+```
+git commit -m 'inicial'
+git push 
+```
+
+## Client configuration with windows 10
+
+As a git client in Windows 10, I have installed <https://git-scm.com/>
+
+As a client utility that integrates with your chosen browser <https://tortoisegit.org> (I used the OpenSSH option)
+
+As an editor I use notepad ++ where I installed the plugin <https://forum.lowyat.net/topic/1358320/all>
+
+Currently, I think Visual Studio Code is a better alternative.
+
+For differences viewer and mege I installed winmerge <https://downloads.sourceforge.net/winmerge/WinMerge-2.16.4-x64-Setup.exe> configuring the latter to integrate tortoisegit diff and merge actions.
+
+It may also be interesting to have Putty and WinSCP installed.
+
+To clone the server repository
+
+```
+C:
+mkdir c:\uv
+cd c:\uv
+git clone srigau@uvsprv00:/usr/gitserver/dp1.git
+```
+
+Here are the examples in the script directory
+
+If you make a change on the windows client, you have to make a commit and then push on the server to make a pull from the server.
+
+```
+local.GIT_PUSH.bat
+UVSPRV00.dp1.GIT_PULL.bat
+```
+
+If you make a change directly to the server, you need to make a commit and push on the server and then on the windows client make a pull. 
+
+```
+UVSPRV00.dp1.GIT_PUSH.bat
+local.GIT_PULL.bat
+```
 

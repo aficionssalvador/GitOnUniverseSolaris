@@ -95,7 +95,7 @@ git init –bare --share
 
 
 
-## Instal·lació  del client de git (compte de programes) 
+## Instal·lació  del client de git (compte de programes del servidor) 
 
 Cal crear un client connectat amb “origin/master” de srigau@uvsprv00:/usr/gitserver/dp1.git
 
@@ -124,7 +124,7 @@ cd /usr/dadesuv/dp1
 git congig --local -e
 ```
 
- He omplert un arxiu .gitignore per que al fer 
+He omplert un arxiu .gitignore per que al fer 
 
 ```
 git add .
@@ -174,14 +174,14 @@ git clone srigau@uvsprv00:/usr/gitserver/dp1.git
 
 Al directori de scripts teniu els exemples
 
-Si feu un canvi en el client windows cal fer un commit i un push i despres en el servidor fer un pull en el servidor.
+Si feu un canvi en el client windows, cal fer un commit i un push i despres en el servidor fer un pull del servidor.
 
 ```
 local.GIT_PUSH.bat
 UVSPRV00.dp1.GIT_PULL.bat
 ```
 
-Si feu un canvi directament en el servidor cal fer un commit i un push en el servidor i despres en el client windows fer un pull.  Al directori de scripts teniu els exemples:
+Si feu un canvi directament en el servidor cal fer un commit i un push en el servidor i despres en el client windows fer un pull. 
 
 ```
 UVSPRV00.dp1.GIT_PUSH.bat
