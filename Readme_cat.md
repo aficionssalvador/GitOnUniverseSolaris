@@ -2,6 +2,8 @@
 
 En aquest document es descriu el procés  de instal·lació i configuració de un servidor “git” i un client en Unix Solaris Sparc. El protocol de comunicacions triat es ssh.
 
+Recordeu tenir una copia de seguretat del servidor abans de fer aquestes accions
+
 Amb ajuda del traductor de google es manté una versió en angles.
 
 ## Instal·lació 
@@ -72,3 +74,117 @@ ssh-keygen
 ```
 
 Si heu seguit aquets passos no cal introduir la contrasenya al connectar el client.
+
+## Instal·lacio servidor git
+
+Per les proves he instal·lat el servidor a:  srigau@uvsprv00:/usr/gitserver/dp1.git (el ideal seria ubicar-lo al núvol) 
+
+```
+cd /usr/gitserver
+# ó 
+mkdir /usr/gitserver
+```
+
+```
+cd /usr/gitserver
+umask 0 ;# o els permisos correctes 
+mkddir dp1.git
+cd dp1.git
+git init –bare --share
+```
+
+
+
+## Instal·lació  del client de git (compte de programes) 
+
+Cal crear un client connectat amb “origin/master” de srigau@uvsprv00:/usr/gitserver/dp1.git
+
+en el directori “srigau@uvsprv00:/usr/dadesuv/dp1”
+
+Aquesta opcio jo la faig fen un clon del repositori anterior, pero requereix un directori buit
+
+```
+umask 0
+mkdir /usr/dadesuv/tmp
+cd /usr/dadesuv/tmp
+git clone file:///usr/gitserver/dp1.git
+```
+
+El unic que volem es el contingut del directori .git que ha creat i el deixem al directori del compte de programes.
+
+```
+mv /usr/dadesuv/tmp/dp1/.git /usr/dadesuv/dp1
+rm -r /usr/dadesuv/tmp
+```
+
+Podem configurar el compte amb la informacio del usuari
+
+```
+cd /usr/dadesuv/dp1
+git congig --local -e
+```
+
+ He omplert un arxiu .gitignore per que al fer 
+
+```
+git add .
+```
+
+El que faci es incloure el mateix que (podeu crear un script amb la següent llista)
+
+```
+git add PRGH ;# programes
+..
+git add SUBPRG ;# subrutines
+..
+git add TXTH ;# includes
+```
+
+El important es incorporar tots els directoris de programes fonts sense cap arxiu de dades.
+
+Per últim he pujat al servidor la versió de programes actual.
+
+```
+git commit -m 'inicial'
+git push 
+```
+
+## Configuracio del client amb windows 10
+
+Com client de git a Windows 10 he instal·lat el de <https://git-scm.com/>
+
+Com utilitat client que s’integra amb el explorador triat <https://tortoisegit.org> (jo he utilitzat la opcio OpenSSH)
+
+Com editor jo utilitzo el notepad++ en el que he instal·lat el plugin <https://forum.lowyat.net/topic/1358320/all>
+
+Actualment, crec que Visual Studio Code suposa una millor alternativa.
+
+Per visor de diferencies i mege he instal·lat winmerge <https://downloads.sourceforge.net/winmerge/WinMerge-2.16.4-x64-Setup.exe> configurant aquest últim per integrar les accions de diff i merge del tortoisegit.
+
+Tambe pot ser interesan, tenir instal·lat Putty i WinSCP.
+
+Per clonar el repositori del servidor
+
+```
+C:
+mkdir c:\uv
+cd c:\uv
+git clone srigau@uvsprv00:/usr/gitserver/dp1.git
+```
+
+Al directori de scripts teniu els exemples
+
+Si feu un canvi en el client windows cal fer un commit i un push i despres en el servidor fer un pull en el servidor.
+
+```
+local.GIT_PUSH.bat
+UVSPRV00.dp1.GIT_PULL.bat
+```
+
+Si feu un canvi directament en el servidor cal fer un commit i un push en el servidor i despres en el client windows fer un pull.  Al directori de scripts teniu els exemples:
+
+```
+UVSPRV00.dp1.GIT_PUSH.bat
+local.GIT_PULL.bat
+```
+
