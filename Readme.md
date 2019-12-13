@@ -33,26 +33,26 @@ I modified "/ etc / passwd" to use this directory.
 You need to have the ".bashrc" to configure the $ PATH variable
 
 ```
- -rw-rw ---- 1 srigau other 63 Dec 11 12:43 .bashrc
+ -rw-rw----   1 srigau        other         63 dic. 11 12:43 .bashrc
 ```
 
  You must have the ".profile" to retrieve the environment variables for uniVerse
 
-``
- -rw-r - r-- 1 srigau other 759 Dec 11 11:12 PM
-``
+```
+ -rw-r--r--   1 srigau        other        759 dic. 11 11:12 .profile
+```
 
 The .ssh directory must be created / created
 
-``
-drwx ------ 2 srigau other 512 Dec 11 11:21 .ssh
-``
+```
+drwx------   2 srigau         other        512 dic. 11 11:21 .ssh
+```
 
  and inside the directory
 
-``
--rw ------- 1 srigau other 740 Dec 11 11:21 .ssh / authorized_keys
-``
+```
+-rw-------   1 srigau         other        740 dic. 11 11:21 .ssh/authorized_keys
+```
 
 This file ".ssh / authorized_keys" contains the public key of the client PC that can be found in the file "id_rsa.pub" of the directory "C: \ Users \ srigau \ .ssh"
 
@@ -79,7 +79,7 @@ If you have followed these steps, you do not need to enter the password when con
 
 ## Git server installation
 
-For testing I installed the server at: @ @ uvsprv00: /usr/gitserver/dp1.git (the ideal would be to place it in the cloud)
+For testing I installed the server at: srigau@uvsprv00:/usr/gitserver/dp1.git (the ideal would be to place it in the cloud)
 
 ```
 cd /usr/gitserver
@@ -97,9 +97,7 @@ git init –bare --share
 
 ## Git client installation (server program account)
 
-You need to create a client connected to the "origin / master" of the @ uvsprv00: /usr/gitserver/dp1.git
-
-in the directory "srigau @ uvsprv00: / usr / datauv / dp1"
+You need to create a client connected to the "origin / master" of the srigau@uvsprv00:/usr/gitserver/dp1.git in the directory "srigau@uvsprv00:/usr/dadesuv/dp1"
 
 This option I make is a clone of the previous repository, but it requires an empty directory
 

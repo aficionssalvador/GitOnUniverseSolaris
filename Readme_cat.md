@@ -97,9 +97,7 @@ git init –bare --share
 
 ## Instal·lació  del client de git (compte de programes del servidor) 
 
-Cal crear un client connectat amb “origin/master” de srigau@uvsprv00:/usr/gitserver/dp1.git
-
-en el directori “srigau@uvsprv00:/usr/dadesuv/dp1”
+Cal crear un client connectat amb “origin/master” de srigau@uvsprv00:/usr/gitserver/dp1.git en el directori “srigau@uvsprv00:/usr/dadesuv/dp1”
 
 Aquesta opcio jo la faig fen un clon del repositori anterior, pero requereix un directori buit
 
