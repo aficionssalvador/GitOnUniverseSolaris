@@ -2,7 +2,9 @@
 
 En aquest document es descriu el procés  de instal·lació i configuració de un servidor “git” i un client en Unix Solaris Sparc. El protocol de comunicacions triat es ssh.
 
-Recordeu tenir una copia de seguretat del servidor abans de fer aquestes accions
+Recordeu tenir una copia de seguretat del servidor abans de fer aquestes accions.
+
+Aquest document ha sigut possible gracies a la inestimable col·laboració de [@xrigau](https://github.com/xrigau)
 
 Amb ajuda del traductor de google es manté una versió en angles.
 
