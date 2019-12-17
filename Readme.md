@@ -4,6 +4,8 @@ This document describes the installation and configuration process for a "git" s
 
 Remember to backup your server before doing these actions
 
+This document was made possible by the invaluable collaboration of [@xrigau](https://github.com/xrigau)
+
 With the help of the google translator an English version is maintained.
 
 ## Installation
